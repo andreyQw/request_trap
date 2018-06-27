@@ -47,6 +47,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
 
       format.html { redirect_to requests_url }
+      format.js
       format.json {
         render :'requests/index', status: :created, location: @request
       }

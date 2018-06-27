@@ -10,6 +10,7 @@ $(function () {
         $('#url_path').val('');
     });
 
+
     // Pusher.logToConsole = true;
 
     var pusher = new Pusher('375f7c75b2f9382b0fd1', {
@@ -34,7 +35,7 @@ function addReq(data) {
     } else {
         /* code if not found */
         $('#req_list tbody').append(
-            '<tr><td>' + '<a href="' + data.path_url + '/requests" id="req_'+data.req_id +'">' +data.path_url +'</a>'+  '</td><td><a href="' + data.path_url + '/requests">Show request info</a> ||'+'<a href="requests/' + data.req_id + '" data-method="delete"> Destroy-</a></td></tr>'
+            '<tr><td>' + '<a href="' + data.path_url + '/requests" id="req_'+data.req_id +'">' +data.path_url +'</a>'+  '</td><td><a href="' + data.path_url + '/requests">Show request statistic</a> ||'+'<a href="requests/' + data.req_id + '" data-method="delete"> Destroy-</a></td></tr>'
         );
     }
 }

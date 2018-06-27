@@ -19,7 +19,7 @@
       <tr>
         <td><%= link_to "#{request.path_url}", "#{request.path_url}"+'/requests', id: 'req_'+"#{request.id}" %></td>
         <td>
-          <%= link_to 'Show request info', "#{request.path_url}"+'/requests' %>
+          <%= link_to 'Show request statistic', "#{request.path_url}"+'/requests' %>
           ||
           <%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
