@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Info requests</h1>
+<h1>Info</h1>
+
+<div class="container">
+  <div class="row">
+    <table id="req_info" class="table" data-id="<%= @table_id %>">
+      <thead>
+      <tr>
+        <th>path_url</th>
+        <th>remote_ip</th>
+        <th>req_method</th>
+        <th>scheme</th>
+        <th>query_string</th>
+        <th>query_params</th>
+        <th>cookies</th>
+        <th colspan="3">action</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @req_infos.each do |request| %>
+        <tr>
+          <td><%= request.request.path_url %></td>
+          <td><%= request.remote_ip %></td>
+          <td><%= request.req_method %></td>
+          <td><%= request.scheme %></td>
+          <td><%= request.query_string %></td>
+          <td><%= request.remote_ip %></td>
+          <td><%= request.cookies %></td>
+
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

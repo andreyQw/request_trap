@@ -1,0 +1,65 @@
+
+<div class="row">
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <p>GET-imitation | </p>
+    <p>url: '/facebook/get'</p>
+    <%= form_with( url: '/facebook/get', method: "get", remote: true, format: :json, :id => 'new_get') do |form| %>
+
+      <div class="field">
+        <%= form.label :url_path %>
+        <%= form.text_field :url_path %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <p>POST-imitation</p>
+    <p>url: '/twitter/post'</p>
+    <%= form_with(url: '/twitter/post', method: "post", remote: true, format: :json, :id => 'new_post') do |form| %>
+
+      <div class="field">
+        <%= form.label :url_path %>
+        <%= form.text_field :url_path %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <p>PUT-imitation</p>
+    <p>url: '/telegram/put'</p>
+    <%= form_with(url: '/telegram/put', method: "put", remote: true, format: :json, :id => 'new_put') do |form| %>
+
+      <div class="field">
+        <%= form.label :url_path %>
+        <%= form.text_field :url_path %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <p>DELETE-imitation</p>
+    <p>url: '/google/del'</p>
+    <%= form_with(url: '/google/del', method: "delete", remote: true, format: :json, :id => 'new_delete') do |form| %>
+
+      <div class="field">
+        <%= form.label :url_path %>
+        <%= form.text_field :url_path %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

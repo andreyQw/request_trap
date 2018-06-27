@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Index requests trap</h1>
+<div class="container">
+  <%= render 'formImitation', request: @request %>
+</div>
+
+<h1>Requests</h1>
+<table id="req_list" class="table">
+  <thead>
+    <tr>
+      <th>Url path</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= link_to "#{request.path_url}", "#{request.path_url}"+'/requests', id: 'req_'+"#{request.id}" %></td>
+        <td>
+          <%= link_to 'Show request info', "#{request.path_url}"+'/requests' %>
+          ||
+          <%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
