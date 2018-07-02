@@ -16,32 +16,14 @@ class RequestsController < ApplicationController
         :cookies => @req.cookies
     )
 
-    Pusher.trigger('request-channel', 'request-event', {
-        path_url: @request.path_url,
-        req_id: @request.id
-    })
-
-    Pusher.trigger('req_info-channel', 'req_info-event', {
-        path_url: @request.path_url,
-        remote_ip: @info.remote_ip,
-        req_method: @info.req_method,
-        scheme: @info.scheme,
-        query_string: @info.query_string,
-        query_params: @info.query_params,
-        cookies: @info.cookies
-    })
-
-    @id_channel = @request.id.to_s + '-channel'
-    @id_event = @request.id.to_s + '-event'
-    Pusher.trigger(@id_channel, @id_event, {
-        path_url: @request.path_url,
-        remote_ip: @info.remote_ip,
-        req_method: @info.req_method,
-        scheme: @info.scheme,
-        query_string: @info.query_string,
-        query_params: @info.query_params,
-        cookies: @info.cookies
-    })
+    # ActionCable.server.broadcast "requests_channel",
+    #       :remote_ip => @info.remote_ip,
+    #       :req_method => @info.request_method,
+    #       :scheme => @info.scheme,
+    #       :query_string => @info.query_string,
+    #       :query_params => @info.query_params,
+    #       :cookies => @info.cookies
+    #   head :ok
 
 
     respond_to do |format|
