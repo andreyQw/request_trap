@@ -12,29 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_06_23_201757) do
 
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "commenter"
-    t.text "body"
-    t.integer "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_comments_on_article_id"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.text "text"
-    t.string "user_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "req_infos", force: :cascade do |t|
     t.string "remote_ip"
     t.string "req_method"
@@ -42,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_06_23_201757) do
     t.string "query_string", default: ""
     t.string "query_params", default: ""
     t.string "cookies"
+    t.string "headers"
     t.integer "request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
