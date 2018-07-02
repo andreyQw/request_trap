@@ -28,6 +28,6 @@ $(function () {
 
 function addReqInfo(data) {
     $('#req_info tbody').append(
-        '<tr><td>'+ data.path_url +'</td><td>'+ data.remote_ip + '</td><td>'+ data.req_method +'</td><td>'+ data.scheme +'</td><td>'+ data.query_string +'</td><td>'+ data.query_params +'</td><td>'+ data.cookies +'</td></tr>'
+        '<tr><td>'+ data.path_url +'</td><td>'+ data.remote_ip + '</td><td>'+ data.req_method +'</td><td>'+ data.scheme +'</td><td>'+ data.query_string +'</td><td>'+ data.query_params +'</td><td>'+ data.cookies + '</td><td>'+ data.headers +'</td></tr>'
     );
 }
