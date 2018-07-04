@@ -19,10 +19,10 @@ function addReq(data) {
 
     if(new_req.length) {
         /* code if request already exists */
-        $('#alert_s').show();
-        setTimeout(function(){
-            $('#alert_s').hide();
-        }, 3000);
+        // $('#alert_s').show();
+        // setTimeout(function(){
+        //     $('#alert_s').hide();
+        // }, 3000);
     } else {
         /* code if this request not found */
         $('#req_list tbody').append(

@@ -60,7 +60,6 @@ class RequestsController < ApplicationController
       format.json {
         render :'requests/index', status: :created, location: @request
       }
-
     end
 
   end
@@ -130,6 +129,6 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.permit(:path_url)
+      params.permit(@request, :path_url)
     end
 end
