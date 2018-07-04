@@ -41,6 +41,7 @@ class RequestsController < ApplicationController
 
     @id_channel = @request.id.to_s + '-channel'
     @id_event = @request.id.to_s + '-event'
+
     Pusher.trigger(@id_channel, @id_event, {
         path_url: @request.path_url,
         remote_ip: @info.remote_ip,
@@ -51,7 +52,6 @@ class RequestsController < ApplicationController
         cookies: @info.cookies,
         headers: @info.headers
     })
-
 
     respond_to do |format|
 
