@@ -14,33 +14,35 @@ class RequestsController < ApplicationController
     header_keys.each {|key| header_list[key] = request.headers[key]}
 
     @info = @request.req_infos.create(
-        :remote_ip => @req.remote_ip,
-        :req_method => @req.request_method,
-        :scheme => params['scheme'],
-        :query_string => @req.query_string,
-        :query_params => params,
-        :cookies => @req.cookies,
-        :headers => header_list.to_s
+        remote_ip: @req.remote_ip,
+        req_method: @req.method,
+        scheme: params['scheme'],
+        query_string: @req.query_string,
+        # query_params: params,
+        # cookies: @req.cookies,
+        # headers: header_list.to_s
     )
 
-    # ActionCable.server.broadcast "requests_channel",
-    #       :remote_ip => @info.remote_ip,
-    #       :req_method => @info.request_method,
-    #       :scheme => @info.scheme,
-    #       :query_string => @info.query_string,
-    #       :query_params => @info.query_params,
-    #       :cookies => @info.cookies
-    #   head :ok
+    ActionCable.server.broadcast "req_channel",
+                                 req_id: @request.id,
+                                 path_url: @request.path_url,
+                                 req_inf_id: @info.id,
+                                 remote_ip: @info.remote_ip,
+                                 req_method: @info.req_method,
+                                 scheme: @info.scheme,
+                                 query_string: @info.query_string,
+                                 query_params: @info.query_params,
+                                 cookies: @info.cookies
+    head :ok
 
 
-    respond_to do |format|
-
-      format.html { redirect_to requests_url }
-      format.js
-      format.json {
-        render :'requests/index', status: :created, location: @request
-      }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to requests_url }
+    #   format.js
+    #   format.json {
+    #     render :'requests/index', status: :created, location: @request
+    #   }
+    # end
 
   end
 

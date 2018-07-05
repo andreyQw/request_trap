@@ -6,8 +6,8 @@ class CreateReqInfos < ActiveRecord::Migration[5.2]
       t.string :scheme, default: ''
       t.string :query_string, default: ''
       t.string :query_params, default: ''
-      t.string :cookies
-      t.string :headers
+      t.string :cookies, default: ''
+      t.string :headers, default: ''
       t.references :request, foreign_key: true
 
       t.timestamps

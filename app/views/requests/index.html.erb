@@ -21,7 +21,7 @@
   <tbody>
     <% @requests.each do |request| %>
       <tr>
-        <td><%= link_to "#{request.path_url}", "#{request.path_url}"+'/requests', id: 'req_'+"#{request.id}" %></td>
+        <td><%= link_to "#{request.path_url}", "#{request.path_url}"+'/requests', id: "req_#{request.id}" %></td>
         <td>
           <%= link_to 'Show request statistic', "#{request.path_url}"+'/requests' %>
           ||
