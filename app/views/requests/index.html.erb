@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<div id="alert_s" class="alert alert-success" hidden>
+  <strong>Success!</strong> Request info was saved.
+</div>
+
 <h1>Index requests trap</h1>
 <div class="container">
   <%= render 'formImitation', request: @request %>

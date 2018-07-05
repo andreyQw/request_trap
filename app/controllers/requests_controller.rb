@@ -2,10 +2,16 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   def check_req
-    # Request.find_or_create_by(path_url: 'facebook')
+
     @req = request
 
     @request = Request.find_or_create_by(path_url: params['path_url'].to_s)
+
+    header_keys = request.headers.env.keys.select do |header_name|
+      header_name.match("^HTTP|^REQUEST|^SERVER|^QUERY|PATH")
+    end
+    header_list = {}
+    header_keys.each {|key| header_list[key] = request.headers[key]}
 
     @info = @request.req_infos.create(
         :remote_ip => @req.remote_ip,
@@ -13,7 +19,8 @@ class RequestsController < ApplicationController
         :scheme => params['scheme'],
         :query_string => @req.query_string,
         :query_params => params,
-        :cookies => @req.cookies
+        :cookies => @req.cookies,
+        :headers => header_list.to_s
     )
 
     # ActionCable.server.broadcast "requests_channel",
@@ -33,7 +40,6 @@ class RequestsController < ApplicationController
       format.json {
         render :'requests/index', status: :created, location: @request
       }
-
     end
 
   end

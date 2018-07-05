@@ -15,6 +15,7 @@
         <th>query_string</th>
         <th>query_params</th>
         <th>cookies</th>
+        <th>headers</th>
         <th colspan="3">action</th>
       </tr>
       </thead>
@@ -27,8 +28,9 @@
           <td><%= request.req_method %></td>
           <td><%= request.scheme %></td>
           <td><%= request.query_string %></td>
-          <td><%= request.remote_ip %></td>
+          <td><%= request.query_params %></td>
           <td><%= request.cookies %></td>
+          <td><%= request.headers %></td>
 
         </tr>
       <% end %>
