@@ -1,60 +1,17 @@
 
 <div class="row">
   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-    <p>GET-imitation | </p>
-    <p>url: '/facebook/some_scheme/for/get'</p>
-    <%= form_with( url: '/facebook/some_scheme/for/get', method: "get", remote: true, format: :json, :id => 'new_get') do |form| %>
 
-      <div class="field">
-        <%= form.label :some_data %>
-        <%= form.text_field :some_data %>
-      </div>
+    <p>url: '<span id="show_url">/telegram/some_scheme/for/put</span>'</p>
+    <%= form_with(url: '/telegram/some_scheme/for/post', method: "put", remote: true, format: :json, :id => 'form_change') do |form| %>
 
-      <div class="actions">
-        <%= form.submit %>
-      </div>
-    <% end %>
-  </div>
+      <div class="form-group">
+        <%= form.label :url %>
+        <%= form.text_field :url, :id => 'url' %>
+        <br>
 
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-    <p>POST-imitation</p>
-    <p>url: '/twitter/some_scheme/for/post'</p>
-    <%= form_with(url: '/twitter/some_scheme/for/post', method: "post", remote: true, format: :json, :id => 'new_post') do |form| %>
+        <%= select_tag(:method , options_for_select([['get', 'get'], ['post', 'post'], ['put', 'put'], ['patch', 'patch'], ['delete','delete']]), :id => "method_option") %>
 
-      <div class="field">
-        <%= form.label :some_data %>
-        <%= form.text_field :some_data %>
-      </div>
-
-      <div class="actions">
-        <%= form.submit %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-    <p>PUT-imitation</p>
-    <p>url: '/telegram/some_scheme/for/put'</p>
-    <%= form_with(url: '/telegram/some_scheme/for/put', method: "put", remote: true, format: :json, :id => 'new_put') do |form| %>
-
-      <div class="field">
-        <%= form.label :some_data %>
-        <%= form.text_field :some_data %>
-      </div>
-
-      <div class="actions">
-        <%= form.submit %>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-    <p>DELETE-imitation</p>
-    <p>url: '/google/some_scheme/for/del'</p>
-    <%= form_with(url: '/google/some_scheme/for/del', method: "delete", remote: true, format: :json, :id => 'new_delete') do |form| %>
-
-      <div class="field">
-        <%= form.label :some_data %>
-        <%= form.text_field :some_data %>
       </div>
 
       <div class="actions">

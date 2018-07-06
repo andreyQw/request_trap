@@ -1,5 +1,6 @@
 class ReqInfo < ApplicationRecord
   belongs_to :request
+
   after_create :req_info_send
 
   def req_info_send
@@ -14,6 +15,5 @@ class ReqInfo < ApplicationRecord
                                  query_params: self.query_params,
                                  cookies: self.cookies,
                                  headers: self.headers
-    # head :ok
   end
 end

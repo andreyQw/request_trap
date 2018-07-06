@@ -8,7 +8,7 @@ App.cable = ActionCable.createConsumer();
 
 App.trap = App.cable.subscriptions.create('RequestsChannel', {
     received: function (data) {
-        console.log(data);
+        // console.log(data);
         addReq(data);
     }
 });
