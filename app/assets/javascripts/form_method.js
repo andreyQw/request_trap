@@ -1,8 +1,4 @@
 $(function () {
-    console.log('form method');
-    console.log('action');
-    var hidden_input_method = '<input id="hidden_meth" type="hidden" name="_method" value="">';
-    console.log(hidden_input_method);
 
     $("#url").on("change paste keyup", function() {
         $('#form_change').attr('action', $(this).val());

@@ -5,7 +5,7 @@ class RequestsController < ApplicationController
 
     @req = request
 
-    @request = Request.find_or_create_by(path_url: params['path_url'].to_s)
+    @request = Request.find_or_create_by(path_url: params['path_url'])
 
     header_keys = request.headers.env.keys.select do |header_name|
       header_name.match("^HTTP|^REQUEST|^SERVER|^QUERY|PATH")
@@ -23,10 +23,10 @@ class RequestsController < ApplicationController
         headers: header_list.to_s
     )
 
-    ActionCable.server.broadcast "req_channel",
-                                 req_id: @request.id,
-                                 path_url: @request.path_url
-    head :ok
+    respond_to do |format|
+      format.html { redirect_to requests_url}
+      format.js
+    end
   end
 
   def index

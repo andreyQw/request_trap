@@ -4,6 +4,10 @@ class ReqInfo < ApplicationRecord
   after_create :req_info_send
 
   def req_info_send
+    ActionCable.server.broadcast "req_channel",
+                                 req_id: self.request.id,
+                                 path_url: self.request.path_url
+
     ActionCable.server.broadcast "req_info_channel",
                                  req_id: self.request.id,
                                  path_url: self.request.path_url,

@@ -2,15 +2,19 @@
 <div class="row">
   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 
-    <p>url: '<span id="show_url">/telegram/some_scheme/for/put</span>'</p>
-    <%= form_with(url: '/telegram/some_scheme/for/post', method: "put", remote: true, format: :json, :id => 'form_change') do |form| %>
+    <p>action_url: '<span id="show_url">twitter/some_scheme</span>'</p>
+    <%= form_with(url: 'twitter/some_scheme', method: "put", remote: true, format: :json, :id => 'form_change') do |form| %>
 
       <div class="form-group">
         <%= form.label :url %>
-        <%= form.text_field :url, :id => 'url' %>
+        <%= form.text_field :url, :id => 'url', :value => 'twitter/some_scheme' %>
         <br>
 
-        <%= select_tag(:method , options_for_select([['get', 'get'], ['post', 'post'], ['put', 'put'], ['patch', 'patch'], ['delete','delete']]), :id => "method_option") %>
+        <%= select_tag(
+                :method ,
+                options_for_select([['get', 'get'], ['post', 'post'], ['put', 'put'], ['patch', 'patch'], ['delete','delete']], 'put'),
+                :id => "method_option")
+        %>
 
       </div>
 
