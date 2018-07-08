@@ -14,6 +14,9 @@ redis: &redis
   adapter: redis
   url: redis://localhost:6379/1
 
-production: *redis
+
+production:
+  adapter: async
+#production: *redis
 development: *redis
 test: *redis
