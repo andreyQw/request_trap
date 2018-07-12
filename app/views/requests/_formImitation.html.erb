@@ -7,11 +7,11 @@
 
       <div class="form-group">
         <%= form.label :url %>
-        <%= form.text_field :url, :id => 'url', :value => 'twitter/some_scheme' %>
+        <%= form.text_field :url, :id => 'url', :value => 'twitter/some_scheme', required: true %>
         <br>
 
         <%= select_tag(
-                :method ,
+                :method,
                 options_for_select([['GET', 'GET'], ['POST', 'POST'], ['PUT', 'PUT'], ['PATCH', 'PATCH'], ['DELETE','DELETE']], 'PUT'),
                 :id => "method_option")
         %>

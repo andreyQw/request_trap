@@ -7,11 +7,7 @@ class RequestsController < ApplicationController
 
     @request = Request.find_or_create_by(path_url: params['path_url'])
 
-    header_keys = request.headers.env.keys.select do |header_name|
-      header_name.match("^HTTP|^REQUEST|^SERVER|^QUERY|PATH")
-    end
-    header_list = {}
-    header_keys.each {|key| header_list[key] = request.headers[key]}
+    headers = request.headers.env.select{|k, _| k =~ /^HTTP|^REQUEST|^SERVER|^QUERY|PATH/}
 
     @info = @request.req_infos.create(
         remote_ip: @req.remote_ip,
@@ -20,7 +16,7 @@ class RequestsController < ApplicationController
         query_string: @req.query_string,
         query_params: params,
         cookies: @req.cookies,
-        headers: header_list.to_s
+        headers: headers.to_s
     )
 
     respond_to do |format|

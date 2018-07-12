@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
 
-  resources :requests do
-    resources :req_info
-  end
+  resources :requests , only: [:index, :destroy]
 
   get '/req_info/all_req_info', to: 'req_info#index', as: 'req_infos'
   get '/:path_url/requests', to: 'req_info#req_list_by_url', as: 'req_list'
