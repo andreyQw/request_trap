@@ -11,7 +11,7 @@ class RequestsController < ApplicationController
 
     @info = @request.req_infos.create(
         remote_ip: @req.remote_ip,
-        req_method: @req.method,
+        req_method: @req.request_method,
         scheme: params['scheme'],
         query_string: @req.query_string,
         query_params: params,

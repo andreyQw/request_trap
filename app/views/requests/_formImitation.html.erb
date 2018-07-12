@@ -7,13 +7,14 @@
 
       <div class="form-group">
         <%= form.label :url %>
-        <%= form.text_field :url, :id => 'url', :value => 'twitter/some_scheme', required: true %>
+        <%= form.text_field :url, :id => 'url', :value => 'twitter/some_scheme', required: true, :onkeyup => "change_action(this)" %>
         <br>
 
         <%= select_tag(
                 :method,
                 options_for_select([['GET', 'GET'], ['POST', 'POST'], ['PUT', 'PUT'], ['PATCH', 'PATCH'], ['DELETE','DELETE']], 'PUT'),
-                :id => "method_option")
+                :id => "method_option",
+                :onchange => "change_method(this);")
         %>
 
       </div>

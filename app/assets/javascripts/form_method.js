@@ -1,19 +1,12 @@
-$(function () {
-    $('#form_change').attr('method', 'PUT');
 
+function change_method(sel) {
+    // var method = $('#method_option').find('option:selected');
 
-    $("#url").on("change paste keyup", function() {
-        $('#form_change').attr('action', $(this).val());
-        $('#show_url').text($(this).val());
-    });
+    $('#form_change').attr('method', sel.value);
+    $('input[name=_method]').val(sel.value);
+}
 
-    $('#method_option').change(function() {
-
-        var $option = $(this).find('option:selected');
-        var value = $option.val();
-
-        $('#form_change').attr('method', value);
-        $('input[name=_method]').val(value);
-        // $('input[name=authenticity_token]').val($('meta[name="csrf-token"]').attr('content'));
-    });
-});
+function change_action(input_url) {
+    $('#form_change').attr('action', input_url.value);
+    $('#show_url').text(input_url.value);
+}
